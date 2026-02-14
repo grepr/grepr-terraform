@@ -581,12 +581,11 @@ func (r *PipelineResource) updateModelFromJob(ctx context.Context, model *Pipeli
 	}
 }
 
-// mapToCreateJobTags converts a map[string]string to generated.CreateJob_Tags
-func mapToCreateJobTags(m map[string]string) generated.CreateJob_Tags {
-	tags := generated.CreateJob_Tags{
+// mapToCreateJobTags converts a map[string]string to *generated.CreateJob_Tags
+func mapToCreateJobTags(m map[string]string) *generated.CreateJob_Tags {
+	return &generated.CreateJob_Tags{
 		AdditionalProperties: m,
 	}
-	return tags
 }
 
 // readJobTagsToMap converts generated.ReadJob_Tags to map[string]string
