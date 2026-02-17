@@ -12,5 +12,5 @@ package tools
 import (
 	// oapi-codegen generates Go client code from OpenAPI specifications.
 	// It's used to generate internal/client/generated/models.gen.go from the Grepr OpenAPI spec.
-	_ "github.com/deepmap/oapi-codegen/cmd/oapi-codegen"
+	_ "github.com/oapi-codegen/oapi-codegen/v2/cmd/oapi-codegen"
 )

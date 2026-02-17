@@ -47,7 +47,7 @@ func TestClient_GetJob(t *testing.T) {
 			Vertices: []generated.Operation{},
 			Edges:    []string{},
 		},
-		Tags:      generated.ReadJob_Tags{AdditionalProperties: map[string]string{"env": "test"}},
+		Tags:      map[string]string{"env": "test"},
 		TeamIds:   &[]string{"team-1"},
 		CreatedAt: now,
 		UpdatedAt: now,
@@ -260,7 +260,7 @@ func TestClient_UpdateJob(t *testing.T) {
 		if req.FromVersion != 1 {
 			t.Errorf("expected fromVersion 1, got %d", req.FromVersion)
 		}
-		if req.DesiredState != generated.STOPPED {
+		if req.DesiredState != generated.UpdateJobDesiredStateSTOPPED {
 			t.Errorf("expected desiredState STOPPED, got %s", req.DesiredState)
 		}
 
@@ -272,7 +272,7 @@ func TestClient_UpdateJob(t *testing.T) {
 
 	req := UpdateJobRequest{
 		FromVersion:  1,
-		DesiredState: generated.STOPPED,
+		DesiredState: generated.UpdateJobDesiredStateSTOPPED,
 		JobGraph: JobGraph{
 			Vertices: []generated.Operation{},
 			Edges:    []string{},
@@ -300,7 +300,7 @@ func TestClient_UpdateJob_Conflict(t *testing.T) {
 
 	req := UpdateJobRequest{
 		FromVersion:  1,
-		DesiredState: generated.STOPPED,
+		DesiredState: generated.UpdateJobDesiredStateSTOPPED,
 		JobGraph: JobGraph{
 			Vertices: []generated.Operation{},
 			Edges:    []string{},
@@ -411,7 +411,7 @@ func TestClient_WaitForState_Success(t *testing.T) {
 		if attempts > 2 {
 			state = JobStateRunning
 		}
-		
+
 		job := Job{
 			Id:    "test-id-123",
 			State: state,

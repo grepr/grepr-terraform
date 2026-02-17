@@ -113,8 +113,8 @@ const (
 
 // DesiredState constants for UpdateJob
 const (
-	DesiredStateRunning = generated.RUNNING
-	DesiredStateStopped = generated.STOPPED
+	DesiredStateRunning = generated.UpdateJobDesiredStateRUNNING
+	DesiredStateStopped = generated.UpdateJobDesiredStateSTOPPED
 )
 
 // OAuthTokenRequest is the request body for obtaining an OAuth token.
